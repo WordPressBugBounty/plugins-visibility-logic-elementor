@@ -1,14 +1,14 @@
 === Visibility Logic for Elementor ===
 Contributors: staxwp, kierantaylorio, codezz, rtynio, geowrge
-Tags: elementor, visibility, conditional content, restrict content, elementor addons
+Tags: elementor, visibility, conditional logic, restrict content, dynamic visibility
 Requires at least: 5.0
 Requires PHP: 7.4
 Tested up to: 6.9
-Stable tag: 2.4.0
+Stable tag: 2.5.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Show/hide Elementor widgets or sections based on user role, user meta, user logged in or not and many more.
+Show or hide Elementor widgets and sections based on user role, logged-in status, date & time, browser, user meta and more.
 
 == Description ==
 Show or hide Elementor widgets or sections based on various conditions like: User is logged in, User has a specific meta, The day is Wednesday, The time is between X and Y, The user is using Firefox browser, and many more.
@@ -16,9 +16,11 @@ Show or hide Elementor widgets or sections based on various conditions like: Use
 The visibility settings will only affect widgets rendering in the frontend. While you are inside Elementor editor you will be able to see all of them.
 
 = Free Features =
-- NEW - Flex container visibility restrictions support
+- NEW - ACF (Advanced Custom Fields) support — show/hide based on any ACF field value
+- NEW - Device Type visibility — target Desktop, Tablet, or Mobile users
+- Flex container visibility restrictions support
 - User Meta content restriction
-- Restrict content based on User Browser (Chrome, Mozilla, Safari, etc)
+- Restrict content based on User Browser (Chrome, Mozilla, Safari, Edge, etc)
 - Date & Time restrictions for content
 - Hide a whole section if all widgets inside it are hidden using visibility settings (Works with nested sections/containers too)
 
@@ -59,6 +61,38 @@ We use Appsero SDK to collect some telemetry data upon user's confirmation. This
 = Found a bug? =
 You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report bug](https://patchstack.com/database/vdp/visibility-logic-elementor).
 
+== Frequently Asked Questions ==
+
+= How do I show or hide an Elementor widget based on user role? =
+Edit your page with Elementor, select any widget, go to the **Visibility** tab, enable Visibility Logic, then open the **User Role** section. Select the roles you want to target (e.g., Administrator, Subscriber, Guest). You can choose to show or hide the element when the condition is met.
+
+= Can I restrict content to logged-in users only? =
+Yes. Enable Visibility Logic on any widget, section or container, go to User Role conditions and select "Logged in users". The element will only be visible to authenticated users. Guests will see nothing (or a fallback message with Pro).
+
+= How do I schedule content to show at a specific date and time? =
+Use the **Date Time** condition. You can set a "From" and "To" date to display content only during a specific period — perfect for sales, events, promotions or limited-time offers. All times are based on your WordPress server time.
+
+= Does it work with Elementor containers and Flexbox? =
+Yes. Visibility Logic fully supports Elementor's Flexbox containers, classic sections, and nested containers. You can also enable "Hide when empty" on a container to automatically hide it when all child widgets are hidden by visibility conditions.
+
+= Can I combine multiple conditions (AND / OR)? =
+Yes. You can enable multiple condition types at once (e.g., User Role + Date Time). In the General settings, choose **All** (all conditions must be met) or **At least one** (any single condition triggers the action). The [Pro version](https://staxwp.com/go/visibility-logic) extends this with advanced AND/OR logic for user meta conditions.
+
+= Can I show different content based on the visitor's country? =
+Geolocation-based visibility is available in [Visibility Logic Pro](https://staxwp.com/go/visibility-logic). It uses MaxMind to detect the visitor's country and dynamically show or hide elements — great for localized offers, compliance notices, or region-specific content.
+
+= Does it work with WooCommerce? =
+The [Pro version](https://staxwp.com/go/visibility-logic) includes WooCommerce conditions — restrict content based on a user's order history, active subscriptions, or customer status. Perfect for showing exclusive content to paying customers.
+
+= What happens when an element is hidden? Is the HTML removed? =
+By default, hidden elements are completely removed from the page HTML. If you need the HTML to remain in the DOM (hidden via CSS), enable the **Keep HTML / Hide by CSS** option. The Pro version also offers a **Fallback** feature to replace hidden elements with a custom message or an Elementor template.
+
+= Will this slow down my website? =
+No. Visibility Logic processes conditions server-side during page render with minimal overhead. Hidden elements are removed before the page is sent to the browser, so there's no extra HTML, CSS, or JavaScript loaded for hidden content.
+
+= Is it compatible with caching plugins? =
+Visibility Logic automatically disables Elementor's element caching for pages that use visibility conditions, ensuring dynamic content renders correctly. For full-page caching plugins (WP Rocket, LiteSpeed, etc.), make sure to exclude pages with user-specific conditions from the cache or use the "Keep HTML / Hide by CSS" option with client-side cache.
+
 == Installation ==
 
 1. Upload the plugin to your 'wp-content/plugins' directory
@@ -79,6 +113,12 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 6. Visibility Logic for Elementor - Admin Panel
 
 == Changelog ==
+
+= 2.5.0 =
+* NEW: Device Type condition — show/hide elements for Desktop, Tablet, or Mobile
+* NEW: ACF Field condition — show/hide based on Advanced Custom Fields values (empty, equals, contains, true/false)
+* ACF supports Current Post and Current User field sources
+* Pro upsell hint for advanced ACF features (repeater, options page, AND/OR logic)
 
 = 2.4.0 =
 * WordPress 6.9 compatibility
