@@ -4,7 +4,7 @@ Tags: elementor, visibility, display conditions, conditional visibility, dynamic
 Requires at least: 5.0
 Requires PHP: 7.4
 Tested up to: 7.1.4
-Stable tag: 2.5.2
+Stable tag: 2.5.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -132,6 +132,10 @@ Visibility Logic Pro:
 6. **Admin Panel**: Global plugin settings and configuration
 
 == Changelog ==
+
+= 2.5.3 =
+* Security fix: with Fallback turned on (Visibility Logic Pro), a hidden section or container was shown in full to the visitors the rule should hide it from, and the fallback was not shown. Now the fallback replaces the whole element. Widgets were not affected. Please update.
+* Fix: opening a section in the Visibility tab of the Elementor panel (for example WooCommerce Users) no longer scrolls the panel back to the top; the opened section stays where you clicked it.
 
 = 2.5.2 =
 * Fix: Date FROM and Date TO now use the site time zone (Settings > General), like the time of day and weekday options. Before, they were read as UTC, so a schedule started or ended early or late by the site's offset from UTC. If you shifted your dates to work around this, set them back to the site time.
@@ -284,6 +288,9 @@ Visibility Logic Pro:
 * Initial release
 
 == Upgrade Notice ==
+
+= 2.5.3 =
+Security fix: a hidden section or container with Fallback on was shown in full. Please update. Also keeps the Visibility tab scroll position.
 
 = 2.5.2 =
 Bug fixes: Date FROM/TO use the site time zone, Hide when empty works on Flexbox containers, User Meta keys starting with an underscore match.
